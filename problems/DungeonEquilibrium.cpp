@@ -1,4 +1,4 @@
-#include "../bits-stdc++.h"
+#include <bits/stdc++.h>
 
 using namespace std;
 using ll=long long;
@@ -9,7 +9,6 @@ using vd=vector<d>;
 using vll=vector<ll>;
 using vpii=vector<pii>;
 using mii=map<int,int>;
-using mci=map<char,int>;
 
 template<typename T> using pq_mi=priority_queue<T, vector<T>, greater<T> >;
 template<typename T> using pq_ma=priority_queue<T>;
@@ -20,18 +19,33 @@ template<typename T> using pq_ma=priority_queue<T>;
 #define pb(x) push_back(x)
 #define F first
 #define S second
+#define mp make_pair
 
-#define getst(s) scanf("%s", &s)
+#define getst(s) getline(cin, s);
 
 #define db(x) cout<<"x="<<x<<"\n"
 #define dbpair(p) cout<<"first="<<p.first<<", second="<<p.second<<"\n"
 
 //basic solve
-int solve() {
-    string s;
-    getst(s);
-
-
+void solve() {
+    int n;
+    cin >> n;
+    mii m;
+    int i;
+    int x;
+    fo(i, n) {
+        cin >> x;
+        m[x]++;
+    }
+    int ans=0;
+    for (auto p : m) {
+        if (p.F>p.S) {
+            ans+=p.S;
+        } else if (p.F<p.S) {
+            ans+=p.S-p.F;
+        }
+    }
+    cout<<ans<<"\n";
 }
 
 int main() {
@@ -40,5 +54,7 @@ int main() {
 
     int t; //num testcases
     cin >> t;
+    string s;
+    getst(s);
     while (t--) solve(); //solve each testcase
 }
