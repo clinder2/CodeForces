@@ -1,2 +1,2 @@
 # CodeForces
-CodeForces grind
+CodeForces

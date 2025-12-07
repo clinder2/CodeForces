@@ -1,4 +1,5 @@
-#include "../bits-stdc++.h"
+//#include "../bits-stdc++.h"
+#include <bits/stdc++.h>
 
 using namespace std;
 using ll=long long;
@@ -27,7 +28,7 @@ template<typename T> using pq_ma=priority_queue<T>;
 #define dbpair(p) cout<<"first="<<p.first<<", second="<<p.second<<"\n"
 
 //basic solve
-int solve() {
+void solve() {
     int n, x, y;
     cin >> n;
     cin >> x;
@@ -37,38 +38,16 @@ int solve() {
     mci m;
     x=abs(x);
     y=abs(y);
-    int index=0;
-    int temp=1;
     int b=x+y;
-    // db(b);
-    // db(s);
-    if (n>=b) {
+    int i;
+    fo(i,n) {
+        m[s[i]]++;
+    }
+    int ans=m['4']+2*m['8'];
+    if (b<=ans && x<=n && y<=n) {
         cout<<"YES";
-        return 0;
     } else {
-        int i;
-        fo(i,n) {
-            m[s[i]]++;
-        }
-        // db(m['8']);
-        // db(x);
-        // db(y);
-        int ans=m['4']+2*m['8'];
-        //db(ans);
-        if (x>ans || y>ans) {
-            cout<<"NO";
-            return 0;
-        } else {
-            if (ans>=x+y && n>=x && n>=y) {
-                cout<<"YES";
-                return 0;
-            } else {
-                cout<<"NO";
-                return 0;
-            }
-        }
-        //cout<<"NO";
-        //return 0;
+        cout<<"NO";
     }
 }
 
