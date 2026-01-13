@@ -1,5 +1,5 @@
-#include "../bits-stdc++.h"
-//#include <bits/stdc++.h>
+//#include "../bits-stdc++.h"
+#include <bits/stdc++.h>
 
 using namespace std;
 using ll=long long;
@@ -18,7 +18,7 @@ template<typename T> using pq_mi=priority_queue<T, vector<T>, greater<T> >;
 template<typename T> using pq_ma=priority_queue<T>;
 
 #define nline "\n";
-#define fo(i,s,n) for(i=s; i<n; i++)
+#define fo(i,n) for(i=0; i<n; i++)
 #define fob(i,n) for(i=n; i>=0; i--)
 #define all(v) v.begin(), v.end()
 #define sortall(v) sort(all(v))
@@ -33,10 +33,37 @@ template<typename T> using pq_ma=priority_queue<T>;
 
 //basic solve
 void solve() {
-    string s;
-    getst(s);
-
-
+    int n, m, i=0, temp; cin>>n; cin>>m;
+    pq_ma<int> a; pq_ma<int> b;
+    fo(i,n) {
+        cin>>temp; a.push(temp);
+    }
+    fo(i,m) {
+        cin>>temp; b.push(temp);
+    }
+    i=0;
+    int am=a.top(); int bm=b.top();
+    while (a.size() && b.size()) {
+        if (i%2) {
+            bm=b.top();
+            if (am>bm) {
+                a.push(am-bm);
+            }
+            a.pop();
+        } else {
+            am=a.top();
+            if (bm>am) {
+                b.push(bm-am);
+            }
+            b.pop();
+        }
+        i++;
+    }
+    if (a.size()) {
+        cout<<"Alice"<<nline;
+    } else {
+        cout<<"Bob"<<nline;
+    }
 }
 
 int main() {

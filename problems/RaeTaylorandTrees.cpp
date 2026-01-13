@@ -1,5 +1,5 @@
-#include "../bits-stdc++.h"
-//#include <bits/stdc++.h>
+//#include "../bits-stdc++.h"
+#include <bits/stdc++.h>
 
 using namespace std;
 using ll=long long;
@@ -9,6 +9,7 @@ using vi=vector<int>;
 using vd=vector<d>;
 using vll=vector<ll>;
 using vpii=vector<pii>;
+using vs=vector<string>;
 using mii=map<int,int>;
 using mci=map<char,int>;
 
@@ -33,10 +34,39 @@ template<typename T> using pq_ma=priority_queue<T>;
 
 //basic solve
 void solve() {
-    string s;
-    getst(s);
-
-
+    int n, i, curr; cin>>n;
+    int ma=0, prev=0;
+    vs v; vi v1;
+    cin>>curr; ma=curr;
+    fo(i,1,n) {
+        cin>>curr;
+        if (!prev && curr>ma) {
+            v.pb(to_string(ma)+" "+to_string(curr));
+        } else {
+            if (!prev) {
+                prev=ma;
+            } else if (curr>prev) {
+                v.pb(to_string(prev)+" "+to_string(curr));
+                prev=0;
+            }
+            ma=min(ma,curr);
+            while (v1.size() && v1.back()<curr) {
+                v.pb(to_string(v1.back())+" "+to_string(curr));
+                v1.pop_back();
+            }
+            if (prev) {
+                v1.pb(curr);
+            }
+        }
+    }
+    if (v.size()!=n-1) {
+        cout<<"No"<<nline;
+    } else {
+        cout<<"Yes"<<nline;
+        for (auto s : v) {
+            cout<<s<<nline;
+        }
+    }
 }
 
 int main() {

@@ -1,5 +1,5 @@
-#include "../bits-stdc++.h"
-//#include <bits/stdc++.h>
+//#include "../bits-stdc++.h"
+#include <bits/stdc++.h>
 
 using namespace std;
 using ll=long long;
@@ -18,7 +18,7 @@ template<typename T> using pq_mi=priority_queue<T, vector<T>, greater<T> >;
 template<typename T> using pq_ma=priority_queue<T>;
 
 #define nline "\n";
-#define fo(i,s,n) for(i=s; i<n; i++)
+#define fo(i,n) for(i=0; i<n; i++)
 #define fob(i,n) for(i=n; i>=0; i--)
 #define all(v) v.begin(), v.end()
 #define sortall(v) sort(all(v))
@@ -33,10 +33,14 @@ template<typename T> using pq_ma=priority_queue<T>;
 
 //basic solve
 void solve() {
-    string s;
-    getst(s);
-
-
+    int n, i; string s; cin>>n; cin>>s;
+    char curr=s[n-1]; int ans=0;
+    fob(i, n-2) {
+        if (curr!=s[i]) {
+            ans++;
+        }
+    }
+    cout<<ans<<nline;
 }
 
 int main() {
